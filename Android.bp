@@ -136,11 +136,14 @@ cc_defaults {
 }
 cc_library_static {
     name: "libwayland_client_static",
+    min_sdk_version: "29",
     vendor_available: true,
+    product_available: true,
     defaults: ["libwayland_client_defaults"],
     generated_sources: ["wayland_core_protocol_sources_static"],
     apex_available: [
         "//apex_available:platform",
+        "//apex_available:anyapex",
         "com.android.virt",
     ],
 }
@@ -153,7 +156,13 @@ cc_library_host_shared {
 // Build wayland_server
 cc_library_static {
     name: "libwayland_server",
+    min_sdk_version: "29",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
     vendor_available: true,
+    product_available: true,
     host_supported: true,
     defaults: ["wayland_defaults"],
     srcs: [
